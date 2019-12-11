@@ -20,12 +20,6 @@ getlatestapk() {
     LZ_DECOMPRESS_ARG="--decompress"
   fi;
 
-  # decompress apks
-  # some apks are lz compressed to work around github file-size limits.
-  for foundapklz in $(find "$1" -iname '*.apk.lz'); do
-    $LZ_DECOMPRESS_CMD $LZ_DECOMPRESS_ARG --keep "$foundapklz" || echo "Warning: lz decompress command failed for $foundapklz" >&2
-  done
-
   # sed copies filename to the beginning, to compare version, and later we remove it with cut
   for foundapk in $(find "$1" -iname '*.apk' | sed 's!.*/\(.*\)!\1/&!' | sort -r -t/ -k1,1 -n | cut -d/ -f2-); do
     # Get package version name
