@@ -51,10 +51,10 @@ GAPPS_PRODUCT_PACKAGES += \
     AndroidMigratePrebuilt
 endif
 
-ifneq ($(filter 29,$(call get-allowed-api-levels)),)
-GAPPS_PRODUCT_PACKAGES += \
-    GooglePermissionController
-endif
+## ifneq ($(filter 29,$(call get-allowed-api-levels)),)
+## GAPPS_PRODUCT_PACKAGES += \
+##    GooglePermissionController
+## endif
 
 ifneq ($(filter nano,$(TARGET_GAPPS_VARIANT)),) # require at least nano
 GAPPS_PRODUCT_PACKAGES += \
